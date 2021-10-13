@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+    nginx.ingress.kubernetes.io/backend-protocol: https
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: minio-ingress
+  namespace: minio-local
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: minio.ncode.local
+    http:
+      paths:
+      - backend:
+          service:
+            name: minio
+            port:
+              number: 443
+        path: /
+        pathType: Prefix
