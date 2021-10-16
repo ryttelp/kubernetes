@@ -27,3 +27,9 @@
 ## Flux (Helm operator)
 
 * [Install](https://fluxcd.io/docs/concepts/)
+
+## Rejoin node
+
+* sudo kubeadm reset
+* sudo swapoff -a
+* kubeadm token create --print-join-command
