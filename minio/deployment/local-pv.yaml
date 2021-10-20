@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pc-1
+  name: local-pc-01
   labels:
     pool: "minio-local-pool"
 spec:
@@ -26,7 +26,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pc-2
+  name: local-pc-02
   labels:
     pool: "minio-local-pool"
 spec:
@@ -58,7 +58,7 @@ volumeBindingMode: WaitForFirstConsumer
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pc-3
+  name: local-pc-03
   labels:
     pool: "minio-local-pool"
 spec:
@@ -83,7 +83,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pc-4
+  name: local-pc-04
   labels:
     pool: "minio-local-pool"
 spec:
@@ -94,7 +94,7 @@ spec:
   persistentVolumeReclaimPolicy: Delete
   storageClassName: local-storage
   local:
-    path: /data/vol2
+    path: /data/vol1
   nodeAffinity:
     required:
       nodeSelectorTerms:
@@ -107,7 +107,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pc-5
+  name: local-pc-05
   labels:
     pool: "minio-local-pool"
 spec:
@@ -132,7 +132,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pc-6
+  name: local-pc-06
   labels:
     pool: "minio-local-pool"
 spec:
@@ -157,7 +157,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pc-7
+  name: local-pc-07
   labels:
     pool: "minio-local-pool"
 spec:
@@ -182,7 +182,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pc-8
+  name: local-pc-08
   labels:
     pool: "minio-local-pool"
 spec:
@@ -194,6 +194,106 @@ spec:
   storageClassName: local-storage
   local:
     path: /data/vol2
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - node-4
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-pc-09
+  labels:
+    pool: "minio-local-pool"
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: local-storage
+  local:
+    path: /data/vol3
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - kube-master-2
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-pc-10
+  labels:
+    pool: "minio-local-pool"
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: local-storage
+  local:
+    path: /data/vol3
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - node-1
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-pc-11
+  labels:
+    pool: "minio-local-pool"
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: local-storage
+  local:
+    path: /data/vol3
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - node-3
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-pc-12
+  labels:
+    pool: "minio-local-pool"
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: local-storage
+  local:
+    path: /data/vol3
   nodeAffinity:
     required:
       nodeSelectorTerms:
