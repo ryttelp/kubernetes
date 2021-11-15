@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: minio-ingress
+  name: argo-server-ingress
   annotations:
     cert-manager.io/cluster-issuer: ca-issuer
     nginx.ingress.kubernetes.io/backend-protocol: https
@@ -11,29 +11,17 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - minio.ncode.local
-    secretName: minio.ncode.local-tls
+    - argo.ncode.local
+    secretName: argo.ncode.local-tls
   rules:
-    - host: minio.ncode.local
+    - host: argo.ncode.local
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: minio
+                name: argocd-server
                 port:
                   number: 443
-  # tls:  
-  # - hosts:
-  #   - minio.ncode.local
-  #   secretName: minio-ingress-cert
-  #   env:
-  # - name: CONSOLE_TLS_HOSTNAME
-  #   value: minio-console.ncode.local
-  # - name: CONSOLE_TLS_PORT
-  #   value: "80"
-  # - name: CONSOLE_SECURE_TLS_HOSTNAME
-  #   value: minio-console.code.local
-  # - name: CONSOLE_SECURE_TLS_PORT
-  #   value: "80"
+  
