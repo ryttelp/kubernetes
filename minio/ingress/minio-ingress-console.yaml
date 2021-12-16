@@ -24,7 +24,3 @@ spec:
                 name: minio-dms-1-console
                 port:
                   number: 9443
-  # tls:
-  # - hosts:
-  #   - minio.ncode.local
-  #   secretName: minio-ingress-cert

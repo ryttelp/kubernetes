@@ -12,3 +12,13 @@ Running on machine: MacBook-Pro-Pawe
 Binary: Built with gc go1.17.1 for darwin/amd64
 Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
 I1110 12:57:23.040031   18907 proxy.go:64] proxy command started
+Log file created at: 2021/11/17 21:58:23
+Running on machine: MacBook-Pro-Pawe
+Binary: Built with gc go1.17.1 for darwin/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I1117 21:58:23.558981   29194 proxy.go:64] proxy command started
+Log file created at: 2021/11/18 08:46:23
+Running on machine: MacBook-Pro-Pawe
+Binary: Built with gc go1.17.1 for darwin/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I1118 08:46:23.464978   62974 proxy.go:64] proxy command started

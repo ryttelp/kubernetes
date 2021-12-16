@@ -20,7 +20,7 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - kube-master-2
+          - node-2
 
 ---
 apiVersion: v1
@@ -126,7 +126,7 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - kube-master-2
+          - node-2
 
 ---
 apiVersion: v1
@@ -226,7 +226,7 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - kube-master-2
+          - node-2
 
 ---
 apiVersion: v1

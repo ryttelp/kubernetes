@@ -1,0 +1,104 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: minio.min.io/v2
+kind: Tenant
+metadata:
+  creationTimestamp: "2021-11-10T11:59:47Z"
+  generation: 3
+  name: minio-dms-1
+  namespace: minio-dms
+  resourceVersion: "35978100"
+  uid: ff123189-ff07-49df-9c2d-375389883695
+scheduler:
+  name: ""
+spec:
+  configuration:
+    name: minio-dms-1-env-configuration
+  credsSecret:
+    name: minio-dms-1-secret
+  exposeServices:
+    console: true
+    minio: true
+  image: minio/minio:RELEASE.2021-11-09T03-21-45Z
+  imagePullSecret: {}
+  log:
+    audit:
+      diskCapacityGB: 5
+    db:
+      resources: {}
+      volumeClaimTemplate:
+        metadata:
+          name: minio-dms-1-log
+        spec:
+          accessModes:
+          - ReadWriteOnce
+          resources:
+            requests:
+              storage: "5368709120"
+          storageClassName: local-storage
+        status: {}
+    resources: {}
+  mountPath: /export
+  pools:
+  - affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: v1.min.io/tenant
+              operator: In
+              values:
+              - minio-dms-1
+            - key: v1.min.io/pool
+              operator: In
+              values:
+              - pool-0
+          topologyKey: kubernetes.io/hostname
+    name: pool-0
+    resources:
+      limits:
+        memory: 32Gi
+      requests:
+        memory: 2Gi
+    servers: 4
+    volumeClaimTemplate:
+      metadata:
+        name: data
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: "1342177280"
+        storageClassName: local-storage
+      status: {}
+    volumesPerServer: 2
+  prometheus:
+    diskCapacityGB: 5
+    resources: {}
+    storageClassName: local-storage
+  requestAutoCert: true
+  users:
+  - name: minio-dms-1-user-0
+status:
+  availableReplicas: 4
+  certificates:
+    autoCertEnabled: true
+  currentState: Waiting for Pods to be ready
+  drivesOffline: 6
+  drivesOnline: 2
+  healthMessage: Service Unavailable
+  healthStatus: red
+  pools:
+  - legacySecurityContext: false
+    ssName: minio-dms-1-pool-0
+    state: PoolInitialized
+  revision: 0
+  syncVersion: v4.2.9
+  usage:
+    capacity: 29869596672
+    rawCapacity: 10737418240
+    rawUsage: 31094890496
+  writeQuorum: 6
